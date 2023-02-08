@@ -8,6 +8,108 @@ html {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+/* burger menu */
+
+/* скрываем чекбокс */
+#menu__toggle {
+    opacity: 0;
+  }
+  /* стилизуем кнопку */
+  .menu__btn {
+    display: flex; /* используем flex для центрирования содержимого */
+    align-items: center;  /* центрируем содержимое кнопки */
+    position: fixed;
+    top: 22px;
+    left: 20px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 1;
+  }
+  /* добавляем "гамбургер" */
+  .menu__btn > span,
+  .menu__btn > span::before,
+  .menu__btn > span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: black;
+
+  }
+  .menu__btn > span::before {
+    content: '';
+    top: -8px;
+  }
+  .menu__btn > span::after {
+    content: '';
+    top: 8px;
+  }
+
+  /* контейнер меню */
+.menu__box {
+    display: block;
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    left: -100%;
+    width: 300px;
+    height: 100%;
+    margin: 0;
+    padding: 80px 0;
+    list-style: none;
+    text-align: center;
+    background-color: #011936;
+    box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+  }
+  /* элементы меню */
+  .menu__item {
+    display: block;
+    padding: 12px 24px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .menu__item:hover {
+    background-color: gray;
+  }
+
+  #menu__toggle:checked ~ .menu__btn > span {
+    transform: rotate(45deg);
+  }
+  #menu__toggle:checked ~ .menu__btn > span::before {
+    top: 0;
+    transform: rotate(0);
+  }
+  #menu__toggle:checked ~ .menu__btn > span::after {
+    top: 0;
+    transform: rotate(90deg);
+  }
+  #menu__toggle:checked ~ .menu__box {
+    visibility: visible;
+    left: 0;
+  }
+
+  .menu__btn > span,
+.menu__btn > span::before,
+.menu__btn > span::after {
+  transition-duration: .25s;
+}
+.menu__box {
+  transition-duration: .25s;
+}
+.menu__item {
+  transition-duration: .25s;
+}
+
+.hamburger-menu {
+    display: none;
+}
+
+/*  */
+
 /* FONTS */
 
 .title-40 {
@@ -586,4 +688,350 @@ footer {
     gap: 50px;
     padding-top: 30px;
     padding-bottom: 30px;
+}
+
+/* scroll */
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    max-height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    /* background-color: #011936; */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #011936;
+    /* border-radius: 8px; */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #234f79;
+}
+
+/* responsive design */
+
+@media (min-width: 1241px) {
+
+}
+
+@media (min-width: 769px) and (max-width: 1240px) {
+    .main-content-right {
+        display: none;
+    }
+    
+    .main-content-left {
+        width: 80vw;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        gap: 10px;
+    }
+
+    .header-item1 {
+        width: 75vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header-item2 {
+        width: 75vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        /* flex-wrap: wrap; */
+    }
+
+    .type-of-bakery-card-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+
+    .search-tags-container {
+        width: 60vw;
+        display: flex;
+        justify-content: flex-start;
+        gap: 15px;
+        flex-wrap: wrap;
+        align-items: center;
+        padding-right: 30px;
+    }
+
+}
+
+@media (min-width: 569px) and (max-width: 768px) {
+    header {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        gap: 10px;
+    }
+
+    .hamburger-menu {
+        display: block;
+
+    }
+
+    header .location-link {
+        display: none;
+    }
+
+    .header-item2 {
+        display: none;
+    }
+
+    .main-content-right {
+        display: none;
+    }
+    
+    .main-content-left {
+        width: 80vw;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .search-tags-container {
+        width: 60vw;
+        display: flex;
+        justify-content: flex-start;
+        gap: 15px;
+        flex-wrap: wrap;
+        align-items: center;
+        padding-right: 30px;
+    }
+
+    .reg-pastrycook-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        flex-direction: column;
+        padding-left: 70px;
+        padding-right: 70px;
+    }
+
+    .type-of-bakery-card-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .type-of-bakery-item {
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 120px;
+        height: 130px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        transition-duration: .8s;
+    }
+}
+
+@media (min-width: 320px) and (max-width: 568px) {
+    header {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        gap: 10px;
+    }
+
+    .hamburger-menu {
+        display: block;
+
+    }
+
+    header .location-link {
+        display: none;
+    }
+
+    .header-item2 {
+        display: none;
+    }
+
+    .main-content-right {
+        display: none;
+    }
+    
+    .main-content-left {
+        width: 90vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .search-tags-container {
+        width: 76vw;
+        display: flex;
+        justify-content: flex-start;
+        gap: 15px;
+        flex-wrap: wrap;
+        align-items: center;
+        padding-right: 30px;
+    }
+
+    .reg-pastrycook-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        flex-direction: column;
+        padding-left: 70px;
+        padding-right: 70px;
+    }
+
+    .type-of-bakery-card-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .type-of-bakery-item {
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 120px;
+        height: 130px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        transition-duration: .8s;
+    }
+
+    .header-item3 {
+        display: none;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+}
+
+@media (max-width: 320px) {
+    header {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        gap: 10px;
+    }
+
+    .hamburger-menu {
+        display: block;
+
+    }
+
+    header .location-link {
+        display: none;
+    }
+
+    .header-item2 {
+        display: none;
+    }
+
+    .main-content-right {
+        display: none;
+    }
+    
+    .main-content-left {
+        width: 90vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .search-tags-container {
+        width: 76vw;
+        display: flex;
+        justify-content: flex-start;
+        gap: 15px;
+        flex-wrap: wrap;
+        align-items: center;
+        padding-right: 30px;
+    }
+
+    .reg-pastrycook-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+        flex-direction: column;
+        padding-left: 70px;
+        padding-right: 70px;
+    }
+
+    .type-of-bakery-card-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .type-of-bakery-item {
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 120px;
+        height: 130px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        transition-duration: .8s;
+    }
+
+    .header-item3 {
+        display: none;
+    }
+
+    .footer-content {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
 }
